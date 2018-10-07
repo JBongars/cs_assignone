@@ -32,7 +32,7 @@ public class csScanner {
         String input;
         while(true) {
             input = inputStr(message);
-            if(input.length() > 0) return input.toLowerCase().charAt(0);
+            if(input.length() == 1) return input.toLowerCase().charAt(0);
             else {
                 System.out.println("Invalid entry, please try again...");
             }
@@ -45,8 +45,7 @@ public class csScanner {
 
     public boolean inputDefaultBool(String message, char defaultResponse){
 
-        String inputStr;
-        char input;
+        char input = ' ';
 
         if(defaultResponse != 'y' && defaultResponse != 'n'){
             throw new Error("defaultResponse must equal either 'y' or 'n'...");
@@ -57,10 +56,9 @@ public class csScanner {
             input = inputStr(message).toLowerCase().charAt(0);
         } catch (java.lang.StringIndexOutOfBoundsException err) {
             input = defaultResponse;
+        } finally {
+            return input == 'y';
         }
-        System.out.println("input:"+input+"<END>");
-        System.out.println(input == 'y');
-        return input == 'y';
     }
 
 }

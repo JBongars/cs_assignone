@@ -10,19 +10,28 @@ package com.cs.assignone.question2;
 class Player {
 
     /**
+     * @variable name = the player's name
      * @variable score = the player's accumulated score
      * @variable isCurrentTurn = whether it is the player's current turn
      */
+    private String name;
     private int score;
-    private boolean isCurrentTurn;
 
     /**
      * @description constructor
-     * @param score
+     * @param name
      */
-    Player(int score, boolean isCurrentTurn){
-        this.score = score;
-        this.isCurrentTurn = isCurrentTurn;
+    Player(String name){
+        this.name = name;
+        this.score = 0;
+    }
+
+    /**
+     * @description get the player's name
+     * @return name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -34,19 +43,11 @@ class Player {
     }
 
     /**
-     * @description get the
-     * @return
+     * @description
+     * @param name
      */
-    public boolean getCurrentTurn() {
-        return isCurrentTurn;
-    }
-
-    /**
-     * @description get the current turn
-     * @param currentTurn
-     */
-    public void setCurrentTurn(boolean currentTurn) {
-        isCurrentTurn = currentTurn;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -71,6 +72,6 @@ class Player {
      */
     @Override
     public String toString(){
-        return "<Player>";
+        return "<Player: " + getName() + ">";
     }
 }

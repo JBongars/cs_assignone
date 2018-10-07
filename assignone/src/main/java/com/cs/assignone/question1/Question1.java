@@ -134,7 +134,6 @@ public class Question1 {
             /**
              * Prompt to restart program. Default value is 'n'
              */
-            System.out.println(scn.inputDefaultBool("Would you like to restart?", 'n'));
             if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
                 break;
             }

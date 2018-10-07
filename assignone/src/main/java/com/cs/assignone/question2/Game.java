@@ -14,10 +14,12 @@ class Game {
      * @variable secret = the secret phrase
      * @variable guesses = guesses made throughout the game
      * @variable wrongAnswerCount = number of wrong guesses made throughout the game
+     * @variaable winFlag = determines the current state of whether the game has been won
      */
     private String secret;
     private String guesses;
     private int wrongAnswerCount;
+    private boolean winFlag;
 
     /**
      * @description constructor
@@ -25,8 +27,9 @@ class Game {
      */
     public Game (String secret){
         this.secret = secret;
-        this.guesses = "";
+        this.guesses = " ";
         this.wrongAnswerCount = 0;
+        this.winFlag = false;
     }
 
     /**
@@ -41,15 +44,20 @@ class Game {
         for(char i: guesses.toCharArray()){
             if(i == guess){
                 System.out.println("You have already guessed that character!");
-            } else {
-                this.guesses += guess;
-                if(secret.indexOf(guess) < 0){
-                    wrongAnswerCount++;
-                } else {
-                    score = 1;
-                }
+                return 0;
             }
         }
+
+        this.guesses += guess;
+        if(secret.indexOf(guess) < 0){
+            wrongAnswerCount++;
+        } else if(getPhrase().indexOf('?') >= 0) {
+            score = 1;
+        } else {
+            setWinFlag(true);
+            score = 10;
+        }
+
         return score;
     }
 
@@ -79,11 +87,27 @@ class Game {
     }
 
     /**
+     * @description gets win status flag. Whether game has been won
+     * @return winFlag
+     */
+    public boolean getWinFlag() {
+        return winFlag;
+    }
+
+    /**
      * @description set the secret for the game
      * @param secret
      */
     public void setSecret(String secret) {
         this.secret = secret;
+    }
+
+    /**
+     * @description sets win status flag. Whether game has been won
+     * @param winFlag
+     */
+    public void setWinFlag(boolean winFlag) {
+        this.winFlag = winFlag;
     }
 
     /**
