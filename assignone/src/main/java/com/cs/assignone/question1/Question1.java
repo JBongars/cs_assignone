@@ -2,23 +2,60 @@ package com.cs.assignone.question1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 import com.cs.assignone.dependencies.*;
 
-
+/**
+ * @Author: Julien Bongars
+ * @Author_id: 234234
+ * @Title: Question 1 of 2 of Assignment 1
+ * @Description
+ * Program enables user to input multiple survey results for a television rating service.
+ * Enables input of gender (m/f) and age over N (declarable).
+ * Displays percentages of results. Does not store data
+ * @Dependencies csScanner (see documentation included in class)
+ */
 public class Question1 {
 
-    private static wsScanner scn = new wsScanner();
+    /**
+     * @Description: scanner wrapper for fetching easy inputs
+     */
+    private static csScanner scn = new csScanner();
 
     Question1(){ }
 
+    /**
+     * @
+     * @param myList = target List of type Person
+     * @param cb = cb for filter method call
+     * @return percentage float of filter(cb) divided by the total number of persons in myList
+     */
     private static float getRatio(List<Person> myList, Predicate<Person> cb){
         return myList.stream().filter(cb).count() * 100 / myList.size();
     }
 
+    /**
+     * @Title Main Program
+     * @param args
+     * @description performs the main function for class Question1
+     * @return void
+     */
     public static void main(String[] args) {
+        /**
+         * @variable age = temp variable of storing persons's age
+         * @variable gender = temp variable of storing person's gender
+         * @variable isWatchesShowsRegularly = temp variable for storing whether person watches show regularly
+         * @variable tUnderN = total percentage under N years of age
+         * @variable tOverN = total percentage over N years of age
+         * @variable fTotal = total percentage of females
+         * @variable fUnderN = total percentage of females under N years of age
+         * @variable fOverN = total percentage of females over N years of age
+         * @variable mTotal = total percentage of males
+         * @variable mUnderN = total percentage of males under N years of age
+         * @variable mOverN = total percentage of males over N years of age
+         * @constant N = years of age to base research on
+         */
         List<Person> persons = new ArrayList<>();
         int age;
         char gender;
@@ -37,10 +74,20 @@ public class Question1 {
 
         final int N = 30;
 
+        /**
+         * Main Program
+         */
         while(true){
 
+            /**
+             * Prompt user for Persons information
+             * Store information in myList
+             */
             do {
                 age = scn.inputInt("Please enter the person's age (1...110):");
+                /**
+                 * Checking if person gender was entered as 'm' or 'f'
+                 */
                 while(true) {
                     gender = scn.inputChar("Please enter the person's gender (M/F):");
                     if(gender == 'm' || gender == 'f'){
@@ -52,8 +99,14 @@ public class Question1 {
                 isWatchesShowsRegularly = scn.inputBool("Please enter whether the person watches the show regularly");
                 persons.add(new Person(age, gender, isWatchesShowsRegularly));
 
+                /**
+                 * Checks whether user wants to add a new person's details. Default value is 'y'
+                 */
             } while (scn.inputDefaultBool("Do you want to enter another person's details?", 'y'));
 
+            /**
+             * Calculation for various values
+             */
             fTotal = getRatio(persons, (elem -> elem.getGender() == 'f'));
             mTotal = getRatio(persons, (elem -> elem.getGender() == 'm'));
 
@@ -66,6 +119,9 @@ public class Question1 {
             mUnderN = getRatio(persons, (e -> e.getGender() == 'm' && e.getAge() < N));
             mOverN = getRatio(persons, (e -> e.getGender() == 'm' && e.getAge() >= N));
 
+            /**
+             * Printing the results
+             */
             System.out.println("---------------------------------------------------------");
             System.out.println(String.format("Gender    Under %d    %d or Over      Total", N, N));
             System.out.println("---------------------------------------------------------");
@@ -76,16 +132,15 @@ public class Question1 {
 
             System.out.println("\n\n\n");
 
+            /**
+             * Prompt to restart program. Default value is 'n'
+             */
             System.out.println(scn.inputDefaultBool("Would you like to restart?", 'n'));
             if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
-                System.out.println("hit 1");
                 break;
             }
-            System.out.println("hit 2");
         }
-
-        System.out.println("hit!");
-
+        System.out.println("End of Program...");
     }
 
 }

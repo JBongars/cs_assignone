@@ -1,10 +1,12 @@
 package com.cs.assignone.dependencies;
 
 
-import java.awt.*;
 import java.util.Scanner;
 
-public class wsScanner {
+/**
+ *
+ */
+public class csScanner {
     public Scanner scn = new Scanner(System.in);
 
     public String inputStr(String message) {
