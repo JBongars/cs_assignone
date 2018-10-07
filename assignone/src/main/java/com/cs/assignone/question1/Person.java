@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @Author: Julien Bongars
  * @Author_id: 234234
- * @Title: Person object for Question 1 of 2 of Assignment 1
+ * @Title: Person class for Question 1 of 2 of Assignment 1
  * @Description
  * Person Class for survey results in question 1. Note that this class is not public
  */
@@ -46,7 +46,7 @@ class Person {
      * @Title get isWatchesShowsRegularly
      * @return this.isWatchesShowsRegularly
      */
-    public boolean getIsWatchesShowsRegularly() {
+    public boolean getWatchesShowsRegularly() {
         return isWatchesShowsRegularly;
     }
 

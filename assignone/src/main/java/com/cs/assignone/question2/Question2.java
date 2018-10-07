@@ -1,5 +1,7 @@
 package com.cs.assignone.question2;
 
+import com.cs.assignone.dependencies.csScanner;
+
 /**
  * @Author: Julien Bongars
  * @Author_id: 234234
@@ -13,5 +15,34 @@ package com.cs.assignone.question2;
  * @Dependencies csScanner (see documentation included in class)
  */
 public class Question2 {
+
+    public void Question2() { }
+
+    private static csScanner scn = new csScanner();
+
+    public static void main(String[] arg){
+        /**
+         * @variable scn
+         */
+
+        /**
+         * Main Program
+         */
+        while(true){
+
+
+
+
+            /**
+             * Prompt to restart program. Default value is 'n'
+             */
+            System.out.println(scn.inputDefaultBool("Would you like to restart?", 'n'));
+            if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
+                break;
+            }
+        }
+        System.out.println("End of Program...");
+
+    }
 
 }

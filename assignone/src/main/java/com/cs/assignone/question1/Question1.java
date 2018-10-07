@@ -26,7 +26,7 @@ public class Question1 {
     Question1(){ }
 
     /**
-     * @
+     * @description get the percentage between total number of persons and given filter predicate
      * @param myList = target List of type Person
      * @param cb = cb for filter method call
      * @return percentage float of filter(cb) divided by the total number of persons in myList
@@ -36,9 +36,8 @@ public class Question1 {
     }
 
     /**
-     * @Title Main Program
+     * @description Main Program
      * @param args
-     * @description performs the main function for class Question1
      * @return void
      */
     public static void main(String[] args) {
