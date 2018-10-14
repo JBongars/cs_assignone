@@ -42,6 +42,8 @@ public class Question1 {
      */
     public static void main(String[] args) {
         /**
+         * @variable MINAGE = minimum allowed int for age
+         * @variable MINAGE = maximum allowed int for age
          * @variable age = temp variable of storing persons's age
          * @variable gender = temp variable of storing person's gender
          * @variable isWatchesShowsRegularly = temp variable for storing whether person watches show regularly
@@ -57,6 +59,10 @@ public class Question1 {
          * @constant N = years of age to base research on
          */
         List<Person> persons = new ArrayList<>();
+
+        final int MINAGE = 1;
+        final int MAXAGE = 101;
+
         int age;
         char gender;
         boolean isWatchesShowsRegularly;
@@ -88,7 +94,17 @@ public class Question1 {
              * Store information in myList
              */
             do {
-                age = scn.inputInt("Please enter the person's age (1...110):");
+                /*
+                 * Checking if person age is between 1 and 110;
+                 */
+                while(true) {
+                    age = scn.inputInt("Please enter the person's age (" + MINAGE + "..." + MAXAGE + "):");
+                    if(age > MINAGE && age < MAXAGE){
+                        break;
+                    } else {
+                        System.out.println("Incorrect Value, please try again");
+                    }
+                }
                 /*
                  * Checking if person gender was entered as 'm' or 'f'
                  */
@@ -106,7 +122,7 @@ public class Question1 {
                 /*
                  * Checks whether user wants to add a new person's details. Default value is 'y'
                  */
-            } while (scn.inputDefaultBool("Do you want to enter another person's details?", 'y'));
+            } while (scn.inputBool("Do you want to enter another person's details?", 'y'));
 
             /*
              * Calculation for various values
@@ -147,7 +163,7 @@ public class Question1 {
             /*
              * Prompt to restart program. Default value is 'n'
              */
-            if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
+            if(!scn.inputBool("Would you like to restart?", 'n')){
                 break;
             }
         }

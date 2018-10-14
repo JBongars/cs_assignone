@@ -45,6 +45,7 @@ public class App
                     case '2':
                         System.out.println("starting question 2");
                         question2.main(args);
+                        break;
                     default:
                         System.out.println("Invalid Entry please try again");
                         FLAG = true;
@@ -54,7 +55,7 @@ public class App
             csUtility.clearScreen();
             System.out.println("End of Program...");
 
-        } while(scn.inputDefaultBool("Would you like to select a different option?", 'y'));
+        } while(scn.inputBool("Would you like to select a different option?", 'y'));
 
 
 

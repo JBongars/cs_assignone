@@ -47,7 +47,7 @@ public class Question2 {
              */
             do {
                 players.add(new Player(scn.inputStr("Enter player name:")));
-            } while(players.size() < 2 || scn.inputDefaultBool("Add new player?", 'n'));
+            } while(players.size() < 2 || scn.inputBool("Add new player?", 'n'));
 
             /*
              * Get first player to enter secret phrase (other players will have a turn later on...
@@ -87,7 +87,7 @@ public class Question2 {
                 /*
                  * Ask would the players like to play another game.
                  */
-            } while(scn.inputDefaultBool("Would you like to play another game?", 'y'));
+            } while(scn.inputBool("Would you like to play another game?", 'y'));
 
             /*
              * Scores are tallied up and displayed in descending order
@@ -106,7 +106,7 @@ public class Question2 {
             /*
              * Prompt to restart program. Default value is 'n'
              */
-            if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
+            if(!scn.inputBool("Would you like to restart?", 'n')){
                 break;
             }
         }

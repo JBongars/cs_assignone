@@ -64,7 +64,6 @@ class Game {
 
             this.guesses += guess;
             System.out.println("Current Guesses = " + this.getGuesses());
-            System.out.println("Current Guesses length = " + this.getGuesses().length());
 
             if(secret.indexOf(guess) < 0){
                 wrongAnswerCount++;

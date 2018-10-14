@@ -43,7 +43,7 @@ public class csScanner {
         return inputChar(message + " [y/n]") == 'y';
     }
 
-    public boolean inputDefaultBool(String message, char defaultResponse){
+    public boolean inputBool(String message, char defaultResponse){
 
         char input = ' ';
 
