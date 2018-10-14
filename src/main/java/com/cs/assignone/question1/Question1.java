@@ -19,11 +19,11 @@ import com.cs.assignone.dependencies.*;
 public class Question1 {
 
     /**
-     * @Description: scanner wrapper for fetching easy inputs
+     * @description: scanner wrapper for fetching easy inputs
      */
     private static csScanner scn = new csScanner();
 
-    Question1(){ }
+    public Question1(){ }
 
     /**
      * @description get the percentage between total number of persons and given filter predicate
@@ -75,7 +75,7 @@ public class Question1 {
 
         final int N = 30;
 
-        /**
+        /*
          * Main Program
          */
 
@@ -83,13 +83,13 @@ public class Question1 {
 
         while(true){
 
-            /**
+            /*
              * Prompt user for Persons information
              * Store information in myList
              */
             do {
                 age = scn.inputInt("Please enter the person's age (1...110):");
-                /**
+                /*
                  * Checking if person gender was entered as 'm' or 'f'
                  */
                 while(true) {
@@ -103,12 +103,12 @@ public class Question1 {
                 isWatchesShowsRegularly = scn.inputBool("Please enter whether the person watches the show regularly");
                 persons.add(new Person(age, gender, isWatchesShowsRegularly));
 
-                /**
+                /*
                  * Checks whether user wants to add a new person's details. Default value is 'y'
                  */
             } while (scn.inputDefaultBool("Do you want to enter another person's details?", 'y'));
 
-            /**
+            /*
              * Calculation for various values
              */
             fTotal = getRatio(persons, (elem -> elem.getGender() == 'f'));
@@ -131,7 +131,7 @@ public class Question1 {
             System.out.println("The percentage of those who watch the show regularly = " + isWatchesShowsRegularlyCount / persons.size());
             System.out.println("\n\n");
 
-            /**
+            /*
              * Printing the results
              */
             System.out.println("---------------------------------------------------------");
@@ -144,7 +144,7 @@ public class Question1 {
 
             System.out.println("\n\n\n");
 
-            /**
+            /*
              * Prompt to restart program. Default value is 'n'
              */
             if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
@@ -154,4 +154,8 @@ public class Question1 {
         System.out.println("End of Program...");
     }
 
+    @Override
+    public String toString(){
+        return "<Question 1>";
+    }
 }

@@ -37,31 +37,31 @@ public class Question2 {
 
         csUtility.printStudentInfo("Assignment 1 - Question 2");
 
-        /**
+        /*
          * Main Program
          */
         while(true){
 
-            /**
+            /*
              * Get Player information
              */
             do {
                 players.add(new Player(scn.inputStr("Enter player name:")));
             } while(players.size() < 2 || scn.inputDefaultBool("Add new player?", 'n'));
 
-            /**
+            /*
              * Get first player to enter secret phrase (other players will have a turn later on...
              */
             do {
                 for (int i = 0; i < players.size(); i++) {
                     session = new Game(scn.inputStr(players.get(i).getName() + ", please enter the secret phrase:").toLowerCase());
 
-                    /**
+                    /*
                      * Clear the screen
                      */
                     csUtility.clearScreen();
 
-                    /**
+                    /*
                      * While the game state is not win, give players a chance to guess
                      */
                     while (!session.getWinFlag()) {
@@ -69,13 +69,13 @@ public class Question2 {
                             if (i == j) continue; // player who gave secret phrase should not be allowed to guess
                             currentPlayer = players.get(j);
 
-                            /**
+                            /*
                              * Displays the phrase mask as ???
                              */
                             System.out.println(session.getPhrase());
                             System.out.println();
 
-                            /**
+                            /*
                              * Guesses can either be letters or whole phrases
                              */
                             currentPlayer.addScore(session.makeGuess(scn.inputStr(currentPlayer.getName() + " please enter a guess:")));
@@ -84,12 +84,12 @@ public class Question2 {
                     }
                     System.out.println("\nGame has been won!\n\n");
                 }
-                /**
+                /*
                  * Ask would the players like to play another game.
                  */
             } while(scn.inputDefaultBool("Would you like to play another game?", 'y'));
 
-            /**
+            /*
              * Scores are tallied up and displayed in descending order
              */
             players.sort(Comparator.comparing(Player::getScore, Comparator.reverseOrder()));
@@ -103,7 +103,7 @@ public class Question2 {
             }
             System.out.println("-------------------------------");
 
-            /**
+            /*
              * Prompt to restart program. Default value is 'n'
              */
             if(!scn.inputDefaultBool("Would you like to restart?", 'n')){
@@ -114,4 +114,8 @@ public class Question2 {
 
     }
 
+    @Override
+    public String toString(){
+        return "<Question 2>";
+    }
 }

@@ -47,11 +47,13 @@ class Game {
         if(guessStr.length() > 1){
             if(guessStr.toLowerCase().equals(getSecret())){
                 setWinFlag(true);
-                score = 100 - guesses.length();
+                score = 500 - guesses.length(); //point system is not perfect...
+            } else {
+                System.out.println("Wrong guess... Please try again.");
             }
         } else {
+            //guesses a single character
             char guess = guessStr.charAt(0);
-            System.out.println("New guess = " + guess);
 
             for(char i: guesses.toCharArray()){
                 if(i == guess){
@@ -61,6 +63,9 @@ class Game {
             }
 
             this.guesses += guess;
+            System.out.println("Current Guesses = " + this.getGuesses());
+            System.out.println("Current Guesses length = " + this.getGuesses().length());
+
             if(secret.indexOf(guess) < 0){
                 wrongAnswerCount++;
             } else if(getPhrase().indexOf('?') >= 0){
@@ -70,7 +75,7 @@ class Game {
                 return score;
             } else {
                 setWinFlag(true);
-                score = 50 - guesses.length();
+                score = 50 - guesses.length(); //point system is not perfect
             }
         }
 
